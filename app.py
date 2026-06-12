@@ -404,6 +404,12 @@ if st.button("📊 계산하기"):
 
         elif material in ["콘크리트", "몰탈"]:
 
+            st.write(
+                "콘크리트 계산 실행",
+                material,
+                item["thickness"]
+            )
+
             quantity = (
                 net_area *
                 (item["thickness"] / 1000)
@@ -442,24 +448,24 @@ if st.button("📊 계산하기"):
 # 할증률 적용
 # ======================
 
-            quantity = quantity * (
-                1 + item["waste"] / 100
-            )
+        quantity = quantity * (
+            1 + item["waste"] / 100
+        )
 
-            if material not in [
-                "콘크리트",
-                "몰탈"
-            ]:
-                quantity = math.ceil(quantity)
+        if material not in [
+            "콘크리트",
+            "몰탈"
+        ]:
+            quantity = math.ceil(quantity)
 
-            total_price = quantity * item["price"]
+        total_price = quantity * item["price"]
 
-            carbon = (
-                quantity *
-                materials[material]["carbon"]
-            )
+        carbon = (
+            quantity *
+            materials[material]["carbon"]
+        )
 
-            results.append({
+        results.append({
                 "업체": item["company"],
                 "자재": material,
                 "규격": item["size"],
@@ -470,6 +476,9 @@ if st.button("📊 계산하기"):
             })
 
     df = pd.DataFrame(results)
+
+    st.write("results =", results)
+    st.write("df =", df)
 
     ranking_df = df.sort_values(
         by="총비용",
