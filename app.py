@@ -404,12 +404,6 @@ if st.button("📊 계산하기"):
 
         elif material in ["콘크리트", "몰탈"]:
 
-            st.write(
-                "콘크리트 계산 실행",
-                material,
-                item["thickness"]
-            )
-
             quantity = (
                 net_area *
                 (item["thickness"] / 1000)
@@ -476,9 +470,6 @@ if st.button("📊 계산하기"):
             })
 
     df = pd.DataFrame(results)
-
-    st.write("results =", results)
-    st.write("df =", df)
 
     ranking_df = df.sort_values(
         by="총비용",
