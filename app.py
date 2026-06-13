@@ -3,6 +3,7 @@ import pandas as pd
 import math
 from io import BytesIO
 from openpyxl.styles import Font, PatternFill
+import plotly.express as px
 
 st.set_page_config(page_title="건축 자재 분석 프로그램", layout="wide")
 
@@ -500,10 +501,20 @@ if st.button("📊 계산하기"):
 
     st.subheader("📊 업체별 비용 비교")
 
-    chart_df = df.set_index("업체")
+    chart_df = df.copy()
 
-    st.bar_chart(
-        chart_df["총비용"]
+    fig = px.bar(
+        chart_df,
+        x="업체",
+        y="총비용",
+        text="총비용"
+    )
+
+    fig.update_xaxes(tickangle=0)
+
+    st.plotly_chart(
+        fig,
+        use_container_width=True
     )
 
     st.subheader("🏆 추천 자재")
