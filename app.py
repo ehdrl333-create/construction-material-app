@@ -550,15 +550,15 @@ if st.button("📊 계산하기"):
     """
     )
 
-if len(ranking_df) >= 2:
+    if len(ranking_df) >= 2:
 
-    cost_diff = (
-        ranking_df.iloc[1]["총비용"]
-        - ranking_df.iloc[0]["총비용"]
-    )
+        cost_diff = (
+            ranking_df.iloc[1]["총비용"]
+            - ranking_df.iloc[0]["총비용"]
+        )
 
-    st.info(
-        f"""
+        st.info(
+            f"""
     💰 비용 절감 효과
 
     1위 업체 선택 시
