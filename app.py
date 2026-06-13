@@ -238,7 +238,7 @@ with col1:
             st.warning("최대 4개 자재까지만 비교 가능합니다.")
 
 with col2:
-    if st.button("초기화"):
+    if st.button("🔄 초기화"):
         st.session_state.material_count = 1
         st.session_state.deleted_items = []
         st.rerun()
@@ -256,7 +256,7 @@ for i in range(st.session_state.material_count):
         st.subheader(f"자재 {i+1}")
 
     with col2:
-        if st.button("🗑️", key=f"delete_{i}"):
+        if st.button("❌ 삭제", key=f"delete_{i}"):
 
             st.session_state.deleted_items.append(i)
             st.rerun()
