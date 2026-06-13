@@ -550,6 +550,8 @@ if st.button("📊 계산하기"):
     """
     )
 
+if len(ranking_df) >= 2:
+
     cost_diff = (
         ranking_df.iloc[1]["총비용"]
         - ranking_df.iloc[0]["총비용"]
